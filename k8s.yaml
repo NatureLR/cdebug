@@ -1,0 +1,35 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toolbox
+spec:
+  selector:
+    matchLabels:
+      app: toolbox
+  template:
+    metadata:
+      labels:
+        app: toolbox
+    spec:
+      containers:
+      - name: toolbox
+        image: uhub.service.ucloud.cn/naturelr/toolbox:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: toolbox
+spec:
+  selector:
+    app: toolbox
+  ports:
+  - port: 80
+    targetPort: 80
+  type: NodePort
