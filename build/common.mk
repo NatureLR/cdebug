@@ -1,5 +1,5 @@
 # 全局配置
-PROJECT := toolbox
+PROJECT := cdebug
 ARCHS   := amd64 arm64
 OSS     := linux windows darwin
 # 判断当前commit是否有tag如果有tag则显示tag没有则显示 commit次数.哈希
@@ -54,7 +54,7 @@ CHECK_TGZ := if [ ! -f "$(TGZ_DIR)/$(PRJVER).tar.gz" ]; then echo tgz文件不�
 # docker
 GO_IMAGE         ?= golang:$(GOVERSION)-buster
 # 产生镜像时用于运行的镜像
-GO_RUN_IMAGE     ?= debian:bullseye
+GO_RUN_IMAGE     ?= alpine:latest
 GO_BUILD_IMAGE   ?= golang:$(GOVERSION)-alpine
 GO_BASE_IMAGE    ?= golang:$(GOVERSION)-buster
 RPM_BUILD_IMAGE  ?= centos:7

@@ -1,7 +1,7 @@
 # 构建rpm包的文件
 %global debug_package %{nil}
 
-Name:           toolbox
+Name:           cdebug
 Version:        %{_version}
 Release:        1%{?dist}
 Summary:        用于创建GO项目的脚手架
@@ -38,24 +38,24 @@ BuildRequires:  make
 # 编译脚本
 %build
 
-cd toolbox && make build
+cd cdebug && make build
 
 # 检查
 %check
 
-toolbox/artifacts/bin/toolbox version
+cdebug/artifacts/bin/cdebug version
 
 # 安装阶段需要做的
 %install
 
-install -D  -p  -m 0755 ${RPM_BUILD_DIR}/src/toolbox/artifacts/bin/toolbox ${RPM_BUILD_ROOT}%{_bindir}/toolbox
-install -D -m 0644 ${RPM_BUILD_DIR}/src/toolbox/build/systemd/toolbox.service ${RPM_BUILD_ROOT}%{_unitdir}/toolbox.service
+install -D  -p  -m 0755 ${RPM_BUILD_DIR}/src/cdebug/artifacts/bin/cdebug ${RPM_BUILD_ROOT}%{_bindir}/cdebug
+install -D -m 0644 ${RPM_BUILD_DIR}/src/cdebug/build/systemd/cdebug.service ${RPM_BUILD_ROOT}%{_unitdir}/cdebug.service
 
 # 说明%{buildroot}中那些文件和目录需要打包到rpm中
 %files
 
-%{_bindir}/toolbox
-%{_unitdir}/toolbox.service
+%{_bindir}/cdebug
+%{_unitdir}/cdebug.service
 
 # 变更记录
 %changelog

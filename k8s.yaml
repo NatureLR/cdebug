@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: toolbox
+  name: cdebug
 spec:
   selector:
     matchLabels:
-      app: toolbox
+      app: cdebug
   template:
     metadata:
       labels:
-        app: toolbox
+        app: cdebug
     spec:
       containers:
-      - name: toolbox
-        image: uhub.service.ucloud.cn/naturelr/toolbox:latest
+      - name: cdebug
+        image: uhub.service.ucloud.cn/naturelr/cdebug:latest
         resources:
           limits:
             memory: "128Mi"
@@ -25,10 +25,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: toolbox
+  name: cdebug
 spec:
   selector:
-    app: toolbox
+    app: cdebug
   ports:
   - port: 80
     targetPort: 80

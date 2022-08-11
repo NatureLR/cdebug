@@ -1,4 +1,6 @@
-package tool
+//go:build !windows
+
+package cdebug
 
 import (
 	"fmt"
@@ -108,7 +110,7 @@ func handle(w http.ResponseWriter, r *http.Request) {
 	info.Output(w)
 }
 
-func ToolBox() {
+func Run() {
 	http.HandleFunc("/", handle)
 	if err := http.ListenAndServe(":80", nil); err != nil {
 		log.Fatal(err)

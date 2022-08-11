@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"githu/naturelr/toolbox/pkg/tool"
+	"githu/naturelr/toolbox/pkg/cdebug"
 	"githu/naturelr/toolbox/pkg/versions"
 
 	homedir "github.com/mitchellh/go-homedir"
@@ -17,11 +17,11 @@ import (
 var cfgFile string
 
 var rootCmd = &cobra.Command{
-	Use:   "toolbox",
+	Use:   "cdebug",
 	Short: versions.ShortDescribe,
 	Long:  versions.LongDescribe,
 	Run: func(cmd *cobra.Command, Args []string) {
-		tool.ToolBox()
+		cdebug.Run()
 	},
 	Version: versions.Strings(),
 }
