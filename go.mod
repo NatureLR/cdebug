@@ -1,4 +1,4 @@
-module githu/naturelr/toolbox
+module githu/naturelr/cdebug
 
 go 1.18
 

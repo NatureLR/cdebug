@@ -54,7 +54,7 @@ CHECK_TGZ := if [ ! -f "$(TGZ_DIR)/$(PRJVER).tar.gz" ]; then echo tgz文件不�
 # docker
 GO_IMAGE         ?= golang:$(GOVERSION)-buster
 # 产生镜像时用于运行的镜像
-GO_RUN_IMAGE     ?= alpine:latest
+GO_RUN_IMAGE     ?= debian:bullseye
 GO_BUILD_IMAGE   ?= golang:$(GOVERSION)-alpine
 GO_BASE_IMAGE    ?= golang:$(GOVERSION)-buster
 RPM_BUILD_IMAGE  ?= centos:7

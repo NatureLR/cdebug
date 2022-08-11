@@ -39,8 +39,8 @@ RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list && \
     wget \
     curl
 
-COPY --from=build /build/toolbox .
+COPY --from=build /build/cdebug .
 
 EXPOSE 80
 
-CMD ["./toolbox"]
+CMD ["./cdebug"]

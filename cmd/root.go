@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"githu/naturelr/toolbox/pkg/cdebug"
-	"githu/naturelr/toolbox/pkg/versions"
+	"githu/naturelr/cdebug/pkg/cdebug"
+	"githu/naturelr/cdebug/pkg/versions"
 
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"

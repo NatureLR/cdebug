@@ -1,8 +1,8 @@
-
 package cmd
 
 import (
-	"githu/naturelr/toolbox/pkg/versions"
+	"githu/naturelr/cdebug/pkg/versions"
+
 	"github.com/spf13/cobra"
 )
 

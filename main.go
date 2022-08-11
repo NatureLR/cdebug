@@ -1,8 +1,7 @@
-
 package main
 
 import (
-	"githu/naturelr/toolbox/cmd"
+	"githu/naturelr/cdebug/cmd"
 )
 
 func main() {
