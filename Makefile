@@ -60,6 +60,9 @@ uninstall: ## 卸载安装
 docker: ## 编译docker镜像
 	@echo $(GREEN)构建docker镜像
 	@$(DOCKER_BUILD)
+	@echo $(YELLOW)镜像地址:
+	@echo $(IMAGE_ADDR)
+	@echo $(IMAGE_ADDR_LATEST)
 
 .PHONY: tgz
 tgz: ## 打包为tar包

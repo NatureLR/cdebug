@@ -59,10 +59,18 @@ GO_BUILD_IMAGE   ?= golang:$(GOVERSION)-alpine
 GO_BASE_IMAGE    ?= golang:$(GOVERSION)-buster
 RPM_BUILD_IMAGE  ?= centos:7
 DEB_BUILD_IMAGE  ?= debian:buster
-DOCKER_REPO      ?= hub.docker.com
+
+DOCKER_REPO       = uhub.service.ucloud.cn/naturelr
+IMAGE_ADDR        = $(DOCKER_REPO)/$(PROJECT):$(VERSION)
+IMAGE_ADDR_LATEST = $(DOCKER_REPO)/$(PROJECT):latest
+ifeq ($(DOCKER_REPO),)
+IMAGE_ADDR        = $(PROJECT):$(VERSION)
+IMAGE_ADDR_LATEST = $(PROJECT):latest
+endif
+
 DOCKER_BUILD     := docker build \
-	-t $(PROJECT):latest \
-	-t $(PROJECT):$(VERSION) \
+	-t $(IMAGE_ADDR) \
+	-t $(IMAGE_ADDR_LATEST) \
 	--build-arg RUN_IMAGE=$(GO_RUN_IMAGE) \
 	--build-arg BUILD_IMAGE=$(GO_BUILD_IMAGE) \
 	-f $(BUILD_DIR)/Dockerfile \
