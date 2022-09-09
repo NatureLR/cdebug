@@ -4,7 +4,6 @@ package cdebug
 
 import (
 	"fmt"
-	"log"
 	"net"
 	"net/http"
 	"os"
@@ -12,6 +11,7 @@ import (
 	"strings"
 
 	"github.com/vishvananda/netlink"
+	"k8s.io/klog"
 )
 
 type Info struct {
@@ -69,7 +69,7 @@ func getGwAddr() (addrs []string, err error) {
 func AddrByName(name string) string {
 	list, err := net.Interfaces()
 	if err != nil {
-		log.Println(err)
+		klog.Println(err)
 	}
 
 	for _, iface := range list {
@@ -79,7 +79,7 @@ func AddrByName(name string) string {
 
 		as, err := iface.Addrs()
 		if err != nil {
-			log.Println(err)
+			klog.Println(err)
 			continue
 		}
 		for _, a := range as {
@@ -92,11 +92,11 @@ func AddrByName(name string) string {
 func handle(w http.ResponseWriter, r *http.Request) {
 	host, err := os.Hostname()
 	if err != nil {
-		log.Println(err)
+		klog.Println(err)
 	}
 	saddr, err := getGwAddr()
 	if err != nil {
-		log.Fatalln(err)
+		klog.Fatalln(err)
 		return
 	}
 
@@ -113,6 +113,6 @@ func handle(w http.ResponseWriter, r *http.Request) {
 func Run() {
 	http.HandleFunc("/", handle)
 	if err := http.ListenAndServe(":80", nil); err != nil {
-		log.Fatal(err)
+		klog.Fatal(err)
 	}
 }

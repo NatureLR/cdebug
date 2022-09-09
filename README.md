@@ -3,7 +3,7 @@
 ## docker
 
 ```shell
-docker run -d -p 80:80  uhub.service.ucloud.cn/naturelr/cdebug
+docker run -d --restart=unless-stopped --name cdebug -p 80:80  uhub.service.ucloud.cn/naturelr/cdebug
 ```
 
 ## k8s
